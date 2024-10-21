@@ -1,0 +1,14 @@
+services:
+  strapi:
+    container_name: strapi-test
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./config:/opt/app/config
+      - ./src:/opt/app/src
+      - ./package.json:/opt/package.json
+      - ./.env:/opt/app/.env
+      - ./public/uploads:/opt/app/public/uploads
+    ports:
+      - "4213:1337"
